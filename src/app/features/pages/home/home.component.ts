@@ -17,7 +17,21 @@ export class HomeComponent {
   private productService = inject(ProductService)
 
   allProducts : productInterface[] = [] ;
-  
+
+  customMainSlider: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    autoplay: true,
+    navSpeed: 700,
+    navText: ['', ''],
+    items : 1,
+    nav: true
+  }
+
+
 
   customOptions: OwlOptions = {
     loop: true,
@@ -25,6 +39,7 @@ export class HomeComponent {
     touchDrag: false,
     pullDrag: false,
     dots: false,
+    autoplay: true,
     navSpeed: 700,
     navText: ['', ''],
     responsive: {
@@ -47,9 +62,6 @@ export class HomeComponent {
   ngOnInit(): void {
 
     this.getAllProductsHome()
-
-    
-
 
   }
 

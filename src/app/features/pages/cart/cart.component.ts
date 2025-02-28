@@ -3,10 +3,11 @@ import { CartService } from '../../../core/services/ecomm/cart/cart.service';
 import { productInterface } from '../../../shared/interfaces/product';
 import { cartProductInterface } from '../../../shared/interfaces/product-cart';
 import { ToastrService } from 'ngx-toastr';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
@@ -104,5 +105,7 @@ export class CartComponent {
       }
     })
   }
+
+  
 
 }
