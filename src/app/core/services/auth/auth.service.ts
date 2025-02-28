@@ -18,7 +18,11 @@ export class AuthService {
   constructor() { 
     if(this.PlatformService.checkplatformId())
     {
-      this.getUserData()
+      if(localStorage.getItem('userToken'))
+      {
+        this.getUserData()
+
+      }
     }
   }
 

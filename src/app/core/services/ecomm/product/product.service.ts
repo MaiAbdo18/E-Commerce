@@ -19,7 +19,7 @@ export class ProductService {
     return this.http.get(`${Env.baseURL}/api/v1/products`)
 
   }
-  getSpecificProducts(pId:string) :Observable<any>
+  getSpecificProducts(pId:string|null) :Observable<any>
   {
     return this.http.get(`${Env.baseURL}/api/v1/products/${pId}`)
 
