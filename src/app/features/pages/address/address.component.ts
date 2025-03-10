@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { OrdersService } from '../../../core/services/ecomm/allorders/orders.service';
 
 @Component({
   selector: 'app-address',
@@ -8,6 +10,10 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './address.component.scss'
 })
 export class AddressComponent {
+
+  private activatedRoute = inject(ActivatedRoute) ;
+  private ordersService = inject(OrdersService) ;
+  cartId : string = ""
 
   addressForm:FormGroup = new FormGroup({
 
@@ -18,8 +24,22 @@ export class AddressComponent {
 
   addressSubmit()
   {
-    console.log(this.addressForm.value);
-    
+    this.activatedRoute.paramMap.subscribe((p)=>{
+      this.cartId = p.get('cartId')!
+      this.ordersService.checkout(this.cartId , this.addressForm.value).subscribe({
+        next: (res)=>{
+          console.log('done');
+          
+
+          window.location.href = res.session.url
+
+        } ,
+        error: (err)=>{
+          console.log(err);
+          
+        }
+      })
+    })
   }
 
 

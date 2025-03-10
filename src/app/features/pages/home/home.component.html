@@ -39,7 +39,8 @@
 
 
 
-<div class="text-3xl pt-5">Shop Popular Categories</div>
+<div class="text-3xl py-5 text-green-700 font-semibold">{{'Shop Popular Categories'|translate}} </div>
+
   <owl-carousel-o [options]="customOptions">
 
     @for (item of allProducts; track $index) {
@@ -52,13 +53,17 @@
       
 
   </owl-carousel-o>
-  <div class="font-semibold text-gray-900 py-5">Some of our categories</div>
+<div class="font-semibold text-2xl text-green-700 text-center py-5">{{'Some of our categories' | translate}}</div>
+
+<input type="text" id="base-input" [(ngModel)]="userword" class="mx-auto my-5 bg-gray-50 border border-gray-300 text-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-1/4 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"  placeholder="{{'search by product title' | translate}}"/>
 
 <div class="grid sm:grid-cols-1  lg:grid-cols-2 xl:grid-cols-6 gap-3">
 
-@for (product of allProducts; track $index) {
+      @for (product of allProducts |search : userword ; track $index)
+       {
 
-    <app-card [cardProduct]="product"></app-card>
-}
+        <app-card [cardProduct]="product"></app-card>
+
+      }
 
 </div>

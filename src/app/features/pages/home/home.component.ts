@@ -4,17 +4,23 @@ import { productInterface } from '../../../shared/interfaces/product';
 import { CardComponent } from "../../../shared/components/card/card.component";
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { SearchPipe } from '../../../shared/pipes/search/search.pipe';
+import { FormsModule } from '@angular/forms';
+import { TranslationService } from '../../../core/services/translation/translation.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-home',
-  imports: [CardComponent , CarouselModule],
+  imports: [CardComponent , CarouselModule ,SearchPipe , FormsModule , TranslatePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
 
-  private productService = inject(ProductService)
+  userword : string = "" ;
+  private productService = inject(ProductService) ;
+  private translationService = inject(TranslationService) ;
 
   allProducts : productInterface[] = [] ;
 
@@ -24,6 +30,7 @@ export class HomeComponent {
     touchDrag: false,
     pullDrag: false,
     dots: false,
+    rtl: true,
     autoplay: true,
     navSpeed: 700,
     navText: ['', ''],
@@ -41,6 +48,7 @@ export class HomeComponent {
     dots: false,
     autoplay: true,
     navSpeed: 700,
+    rtl : true ,
     navText: ['', ''],
     responsive: {
       0: {

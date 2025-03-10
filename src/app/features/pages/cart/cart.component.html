@@ -1,5 +1,5 @@
 
-<h1 class="mx-auto text-green-500 my-10 font-semibold text-2xl text-center">Total Price : <span class="text-gray-900">{{totalPrice}}</span> </h1>
+<h1 class="mx-auto text-green-500 my-10 font-semibold text-2xl text-center">{{'Total Price' | translate}} : <span class="text-gray-900">{{totalPrice}}</span> </h1>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -8,16 +8,16 @@
                     <span class="sr-only">Image</span>
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Product
+                    {{'Product' | translate }}
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Qty
+                    {{'Qty' | translate}}
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Price
+                    {{'Price' | translate}}
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Action
+                    {{'Action' | translate}}
                 </th>
             </tr>
         </thead>
@@ -65,7 +65,7 @@
 
 <div class="py-6 text-center">
     <button (click)="clearbtn()" class="btn-danger">Clear Cart</button>
-    <button routerLink="/address" class="btn-green m-4">request Order</button>
+    <button [routerLink]="['/address' , cartId]" class="btn-green m-4">request Order</button>
 
 
 </div>

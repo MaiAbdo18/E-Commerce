@@ -9,12 +9,13 @@ import { Env } from '../../../Environment/Environment';
 export class OrdersService {
 
   private http = inject(HttpClient) ;
+  private userHeaders:any = {token : localStorage.getItem('userToken')} ;
 
   constructor() { }
 
-  checkout(): Observable<any>
+  checkout(cartId:string , addressFormValue:object ): Observable<any>
 {
-  this.http.post(`${Env.baseURL}/api/v1/orders/checkout-session/67b210df429eb834606c7a30?url=http://localhost:3000`)
+  return this.http.post(`${Env.baseURL}/api/v1/orders/checkout-session/${cartId}?url=${Env.ecommlURL}` , {shippingAddress:addressFormValue})
 
 }
 }

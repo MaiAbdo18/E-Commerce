@@ -3,10 +3,11 @@ import { productInterface } from '../../interfaces/product';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../../../core/services/ecomm/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-card',
-  imports: [RouterLink],
+  imports: [RouterLink , TranslatePipe],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })

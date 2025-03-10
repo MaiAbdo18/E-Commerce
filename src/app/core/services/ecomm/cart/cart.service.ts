@@ -9,42 +9,31 @@ import { Observable } from 'rxjs';
 export class CartService {
 
   private http = inject(HttpClient)
-  private userHeaders:any = {token : localStorage.getItem('userToken')}
   constructor() { }
 
   addToCartAPI(pId:string):Observable<any>
   {
 
-    return this.http.post( `${Env.baseURL}/api/v1/cart` , {productId : pId} , {
-      headers : this.userHeaders
-    })
+    return this.http.post( `${Env.baseURL}/api/v1/cart` , {productId : pId})
   }
   updateCartAPI(pId:string , pCount:number):Observable<any>
   {
 
-    return this.http.put( `${Env.baseURL}/api/v1/cart/${pId}` , {count : pCount} , {
-      headers : this.userHeaders
-    })
+    return this.http.put( `${Env.baseURL}/api/v1/cart/${pId}` , {count : pCount})
   }
   getCartAPI():Observable<any>
   {
 
-    return this.http.get( `${Env.baseURL}/api/v1/cart`, {
-      headers : this.userHeaders
-    })
+    return this.http.get( `${Env.baseURL}/api/v1/cart`)
   }
   deleteCartAPI(pId:string):Observable<any>
   {
 
-    return this.http.delete( `${Env.baseURL}/api/v1/cart/${pId}`, {
-      headers : this.userHeaders
-    })
+    return this.http.delete( `${Env.baseURL}/api/v1/cart/${pId}`)
   }
   clearCartAPI():Observable<any>
   {
 
-    return this.http.delete( `${Env.baseURL}/api/v1/cart`, {
-      headers : this.userHeaders
-    })
+    return this.http.delete( `${Env.baseURL}/api/v1/cart`)
   }
 }

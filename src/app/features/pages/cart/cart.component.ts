@@ -4,16 +4,19 @@ import { productInterface } from '../../../shared/interfaces/product';
 import { cartProductInterface } from '../../../shared/interfaces/product-cart';
 import { ToastrService } from 'ngx-toastr';
 import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart',
-  imports: [RouterLink],
+  imports: [RouterLink , TranslatePipe],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
 export class CartComponent {
   private cartService:CartService = inject(CartService) ;
-    private toastrService : ToastrService = inject(ToastrService)
+    private toastrService : ToastrService = inject(ToastrService) 
+    cartId : string = ""
+    
   
 
   cartProducts:cartProductInterface[] = [] ;
@@ -33,7 +36,8 @@ export class CartComponent {
       next : (res)=>{
 
         this.cartProducts = res.data.products ;
-        this.totalPrice = res.data.totalCartPrice
+        this.totalPrice = res.data.totalCartPrice 
+        this.cartId = res.cartId
       
       } ,
 

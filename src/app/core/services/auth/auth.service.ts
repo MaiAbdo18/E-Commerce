@@ -47,6 +47,21 @@ export class AuthService {
     this.userData.next(jwtDecode( JSON.stringify(localStorage.getItem('userToken'))))
   }
 
+  forgetPassword(data:object):Observable<any>
+  {
+    return this.http.post(`${Env.baseURL}/api/v1/auth/forgotPasswords`, data)
+  }
+
+  resetCode(data:object):Observable<any>{
+    return this.http.post(`${Env.baseURL}/api/v1/auth/verifyResetCode`, data)
+  }
+
+  resetPassword(data:object):Observable<any>{
+    return this.http.put(`${Env.baseURL}/api/v1/auth/resetPassword`, data)
+  }
+
+  
+
 }
 
 
